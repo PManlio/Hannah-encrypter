@@ -4,12 +4,20 @@
 class Hannah {
 public:
 	Hannah();
+
 	string GetWord();
-	string SetWord(string);
+	string SetWord();
+	string GetEncrypted();
+	string GetInverted();
+
 	void Init();
+	string ToBit();
+
+	string Invert(string);
+	string Encrypt();
 	
 private:
-
-	// TODO change this to an array of chars [max length == 21]
 	string word;
+	string encrypted;
+	string inverted;
 };
