@@ -5,4 +5,5 @@ int main() {
 	Hannah Cript;
 	// then we can call Encrypt() method
 	Cript.Encrypt();
+	// control to palindrome words has been added.
 }
