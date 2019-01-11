@@ -1,9 +1,10 @@
-#include <hanna.h>
+#include "hannah.h"
 
-string checkLen(string);
+void checkLen(string);
 
-string checkLen(string w){
-    while(w.lenght()<=4 || w.lenght()>=16){
-        Hannah::SetWord();
+void checkLen(string w){ 
+    while(w.length()<=4 || w.length()>=16 || w.length()==0){
+        cout<<"\nPlease, enter a word between 5 and 16 characters.\n";
+        //SetWord();
     }
 }

@@ -1,12 +1,25 @@
 #include "hannah.h"
 
 Hannah::Hannah(){
-	Init();
+	cout << "Hi, I'm Hannah, nice to meet you.\n";
+}
+
+// With this method, you check if the word you set is or isn't a palindrome
+// this because a palindrome would cause the output to be = '000000000000000...'
+bool Hannah::isPalindrome(string instr){
+	string rvstr = instr;
+	reverse(rvstr.begin(), rvstr.end());
+	if (instr == rvstr) {
+		cout << "\nIt has NOT to be a palindrome.\n\n";
+		ispal = true;
+	} else { ispal = false; }
+	return ispal;
 }
 
 string Hannah::SetWord() {
-	cout << "\n Please set the word you want to encrypt (not a palindrome): " << endl;
+	cout << "\nPlease set the word between 5 and 16 chars you want to encrypt (not a palindrome): " << endl;
 	getline(cin, word);
+	//checkLen(word);
 	isPalindrome(word);
 	// TODO when switch to terminal, it calls directly SetWord() method
 	//		in order to do this, change SetWord() in SetWord(string)
@@ -26,6 +39,19 @@ void Hannah::Init(){
 	encrypted = ToBit();
 	Invert(encrypted);
 }
+
+/*
+void Hannah::checkLen(string w){
+	if(w.length()>4 && w.length()<17){
+		isPalindrome(w);
+	} else{
+		while(w.length()<=4 || w.length()>=16){
+     		cout<<"\Enter a word between 5 and 16 characters.\n";
+        	SetWord();
+    	}
+	}
+}
+*/
 
 // Here we take the word we just set and convert it into bit sequence
 string Hannah::ToBit(){
@@ -69,14 +95,3 @@ string Hannah::Encrypt()
 	return ret;
 }
 
-// With this method, you check if the word you set is or isn't a palindrome
-// this because a palindrome would cause the output to be = '000000000000000...'
-bool Hannah::isPalindrome(string instr){
-	string rvstr = instr;
-	reverse(rvstr.begin(), rvstr.end());
-	if (instr == rvstr) {
-		cout << "\nIt has NOT to be a palindrome.\n\n";
-		ispal = true;
-	} else { ispal = false; }
-	return ispal;
-}

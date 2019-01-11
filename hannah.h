@@ -9,6 +9,7 @@ public:
 	string SetWord();
 	string GetEncrypted();
 	string GetInverted();
+	//void checkLen(string);
 
 	void Init();
 	string ToBit();
