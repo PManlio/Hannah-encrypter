@@ -1,4 +1,5 @@
 #include "hannah.h"
+#include "casebitset.h"
 
 Hannah::Hannah(){
 	cout << "Hi, I'm Hannah, nice to meet you.\n";
@@ -18,8 +19,16 @@ bool Hannah::isPalindrome(string instr){
 
 string Hannah::SetWord() {
 	cout << "\nPlease set the word between 5 and 16 chars you want to encrypt (not a palindrome): " << endl;
-	getline(cin, word);
-	//checkLen(word);
+
+	// whith this do-while it is checked the word length
+	do{
+		getline(cin, word);
+		if(word.length()<5 || word.length()>16){
+			cout << "\nMust be a word between 5 and 16 characters.\nEnter your word again, please.\n";
+		}
+	}while(word.length()<5 || word.length()>16);
+	
+	// then it is checked if the word is a palindrome
 	isPalindrome(word);
 	// TODO when switch to terminal, it calls directly SetWord() method
 	//		in order to do this, change SetWord() in SetWord(string)
@@ -33,25 +42,12 @@ string Hannah::GetEncrypted(){ return encrypted; }
 string Hannah::GetInverted(){ return inverted; }
 
 void Hannah::Init(){
-	while (ispal == true) {
+	do{
 		SetWord();
-	}
+	} while(ispal == true);
 	encrypted = ToBit();
 	Invert(encrypted);
 }
-
-/*
-void Hannah::checkLen(string w){
-	if(w.length()>4 && w.length()<17){
-		isPalindrome(w);
-	} else{
-		while(w.length()<=4 || w.length()>=16){
-     		cout<<"\Enter a word between 5 and 16 characters.\n";
-        	SetWord();
-    	}
-	}
-}
-*/
 
 // Here we take the word we just set and convert it into bit sequence
 string Hannah::ToBit(){
@@ -85,13 +81,7 @@ string Hannah::Encrypt()
 	string str1 = Hannah::GetEncrypted(); // this string is the one you set converted in bit-sequence
 	string str2 = Hannah::GetInverted();  // this string is the reversed one
 
-	// const size_t sizeofstr1 = str1.size();
-	// for now, we use 64 bits
-	bitset<128> bstr1(str1), bstr2(str2), finale;
-	finale = bstr1 | bstr2; // here it is done the bitwise OR
-	cout << finale;
-
-	string ret = finale.to_string<char, std::string::traits_type, std::string::allocator_type>();
+	string ret = CaseOfBits(str1, str2);
 	return ret;
 }
 

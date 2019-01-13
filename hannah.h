@@ -17,7 +17,7 @@ public:
 	string Invert(string);
 	string Encrypt();
 	
-	bool ispal = true;
+	bool ispal;
 	bool isPalindrome(string);
 
 private:
