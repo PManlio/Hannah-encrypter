@@ -1,5 +1,6 @@
 #include "hannah.h"
 #include "casebitset.h"
+#include <sstream>
 
 Hannah::Hannah(){
 	cout << "Hi, I'm Hannah, nice to meet you.\n";
@@ -57,10 +58,13 @@ string Hannah::ToBit(){
 
 	// every letter/number of the string you set is converted in a substring of 8-bit
 	for (size_t i = 0; i < toencrypt.size(); ++i) {
+
 		// Here you save the 8-bit value of the current letter of the string
 		newbits = bitset<8>(toencrypt.c_str()[i]);
+		
 		// Then you use an auxiliar string to stringify the 8-bit value of the letter
 		string aux = newbits.to_string<char, std::string::traits_type, std::string::allocator_type>();
+		
 		// Here you add every 8-bit-substring to the master string that has to be returned
 		crypted.append(aux);
 	}
@@ -80,8 +84,29 @@ string Hannah::Encrypt()
 {
 	string str1 = Hannah::GetEncrypted(); // this string is the one you set converted in bit-sequence
 	string str2 = Hannah::GetInverted();  // this string is the reversed one
-
-	string ret = CaseOfBits(str1, str2);
+	string ret = "";
+	ret = CaseOfBits(str1, str2);
+	// prototype:
+            stringstream sstream(ret);
+            cout << "\nStringa di ritorno: " << ret << endl;
+            string aux="";
+            /*while(sstream.good()){
+                bitset<8> bits;
+                sstream >> bits;
+                char c = char(bits.to_ulong());
+				aux.append(c);
+            }*/
+			// not good
+			/* // Prototyping:
+			for(int i = 0; i<=ret.length(); i=i+8){
+				bitset<8> bits;
+				ret.c_str()[i] >> bits;
+				
+				bitset<8> bits(ret.c_str()[i]);
+				char c = char(bits.to_ulong());
+				aux += c;
+			}
+            cout<<"\n\n"<<aux;
+			*/
 	return ret;
 }
-
