@@ -1,6 +1,5 @@
 #include "hannah.h"
 #include "casebitset.h"
-#include <sstream>
 
 Hannah::Hannah(){
 	cout << "Hi, I'm Hannah, nice to meet you.\n";
@@ -80,33 +79,10 @@ string Hannah::Invert(string encrypted){
 }
 
 // Here the encryption takes place
-string Hannah::Encrypt()
-{
+string Hannah::Encrypt(){
 	string str1 = Hannah::GetEncrypted(); // this string is the one you set converted in bit-sequence
 	string str2 = Hannah::GetInverted();  // this string is the reversed one
-	string ret = "";
-	ret = CaseOfBits(str1, str2);
-	// prototype:
-            stringstream sstream(ret);
-            cout << "\nStringa di ritorno: " << ret << endl;
-            string aux="";
-            /*while(sstream.good()){
-                bitset<8> bits;
-                sstream >> bits;
-                char c = char(bits.to_ulong());
-				aux.append(c);
-            }*/
-			// not good
-			/* // Prototyping:
-			for(int i = 0; i<=ret.length(); i=i+8){
-				bitset<8> bits;
-				ret.c_str()[i] >> bits;
-				
-				bitset<8> bits(ret.c_str()[i]);
-				char c = char(bits.to_ulong());
-				aux += c;
-			}
-            cout<<"\n\n"<<aux;
-			*/
+	string ret = CaseOfBits(str1, str2);
+	cout<<"\n\n"<<ret<<"\n\n";
 	return ret;
 }
