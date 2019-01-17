@@ -33,6 +33,9 @@ string CaseOfBits(string str1, string str2){
 	        finale = bstr1 | bstr2; // here it is done the bitwise OR
             retString = to_string(finale.to_ullong());
         } break;
+
+        // From here on: overflow error.
+        /*
         case 72: {
             bitset<72> bstr1(str1), bstr2(str2), finale;
 	        finale = bstr1 | bstr2; // here it is done the bitwise OR
@@ -72,7 +75,8 @@ string CaseOfBits(string str1, string str2){
             bitset<128> bstr1(str1), bstr2(str2), finale;
 	        finale = bstr1 | bstr2; // here it is done the bitwise OR
             retString = to_string(finale.to_ullong());
-        } break;    
+        } break;
+        */   
         default: {
             cout<<"Invalid string.length()\n";
         } break;
