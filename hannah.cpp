@@ -18,15 +18,15 @@ bool Hannah::isPalindrome(string instr){
 }
 
 string Hannah::SetWord() {
-	cout << "\nPlease set the word between 5 and 16 chars you want to encrypt (not a palindrome): " << endl;
+	cout << "\nPlease set the word between 5 and 8 chars you want to encrypt (not a palindrome): " << endl;
 
 	// whith this do-while it is checked the word length
 	do{
 		getline(cin, word);
-		if(word.length()<5 || word.length()>16){
-			cout << "\nMust be a word between 5 and 16 characters.\nEnter your word again, please.\n";
+		if(word.length()<5 || word.length()>8){
+			cout << "\nMust be a word between 5 and 8 characters.\nEnter your word again, please.\n";
 		}
-	}while(word.length()<5 || word.length()>16);
+	}while(word.length()<5 || word.length()>8);
 	
 	// then it is checked if the word is a palindrome
 	isPalindrome(word);
